@@ -1,0 +1,2487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Red Rose Restaurant</title>
+
+<style>
+*{box-sizing:border-box}
+
+:root{
+ --primary:#fc8019;
+ --dark:#111;
+ --light:#f7f7f7;
+}
+
+body{
+ margin:0;
+ font-family:'Segoe UI',Arial,sans-serif;
+ background:#f7f7f7;
+ color:#222;
+}
+
+/* ================= HOME / LOGIN ================= */
+
+#homePage{
+ min-height:100vh;
+ color:white;
+ background:
+ url("https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1400&q=80")
+ no-repeat center/cover;
+}
+
+.home-nav{
+ background:rgba(0,0,0,.75);
+ padding:18px 4%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+}
+
+.home-logo{
+ font-size:28px;
+ font-weight:bold;
+ color:#fc8019;
+}
+
+.home-nav a{
+ color:white;
+ text-decoration:none;
+ margin-left:25px;
+ cursor:pointer;
+}
+
+.home-main{
+ min-height:82vh;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ text-align:center;
+ padding:25px;
+}
+
+.hero{
+ width:100%;
+ max-width:700px;
+ padding:40px 30px;
+ background:rgba(0,0,0,.68);
+ border-radius:15px;
+}
+
+.hero h1{
+ color:#fc8019;
+ font-size:42px;
+ margin:0 0 10px;
+}
+
+.hero p{
+ color:#eee;
+ font-size:18px;
+}
+
+.tabs{
+ display:flex;
+ justify-content:center;
+ gap:15px;
+ margin:25px 0;
+}
+
+.tab{
+ padding:12px 30px;
+ background:rgba(255,255,255,.15);
+ border-radius:7px;
+ cursor:pointer;
+ font-weight:bold;
+}
+
+.tab.active{
+ background:#fc8019;
+}
+
+.form-group{
+ display:flex;
+ flex-direction:column;
+ gap:12px;
+ margin-bottom:15px;
+}
+
+.form-group input{
+ width:100%;
+ padding:13px;
+ border:0;
+ border-radius:6px;
+ font-size:15px;
+}
+
+.btn{
+ background:#fc8019;
+ color:white;
+ border:0;
+ padding:13px 22px;
+ border-radius:6px;
+ cursor:pointer;
+ font-size:15px;
+}
+
+.message{
+ margin:10px;
+ font-weight:bold;
+}
+
+.hidden{
+ display:none!important;
+}
+
+.contact{
+ background:rgba(0,0,0,.85);
+ padding:35px;
+ text-align:center;
+ color:white;
+}
+
+.contact p{
+ margin:8px;
+}
+
+/* ================= RESTAURANT ================= */
+
+#restaurantPage{
+ display:none;
+ min-height:100vh;
+ background:#f7f7f7;
+}
+
+.restaurant-header{
+ background:white;
+ padding:15px 4%;
+ position:sticky;
+ top:0;
+ z-index:20;
+ box-shadow:0 2px 8px #bbb;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
+.logo {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+#search {
+    flex: 1 1 200px;
+    min-width: 0;
+    max-width: 350px;
+}
+
+.header-actions {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+.header-actions button {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 6px 8px;
+    font-size: 12px;
+}
+
+.logo{
+ font-size:25px;
+ font-weight:600;
+ font-family:'Brush Script MT','Segoe Script','Lucida Handwriting',cursive;
+ color:#e53935;
+ margin-right:10px;
+ white-space:nowrap;
+ line-height:0.95;
+ text-align:left;
+ min-width:170px;
+}
+
+.logo .brand-red{display:block;}
+.logo .brand-restaurant{display:block;font-size:19px;margin-top:2px;}
+
+input,select,button{
+ padding:10px;
+ border-radius:6px;
+ border:1px solid #ccc;
+ font-size:14px;
+}
+
+button{
+ background:#e53935;
+ color:white;
+ border:0;
+ cursor:pointer;
+}
+
+button:hover{
+ opacity:.9;
+}
+
+nav{
+ display:flex;
+ gap:8px;
+ flex-wrap:wrap;
+ margin-top:12px;
+}
+
+nav button{
+ background:#333;
+}
+
+nav button.active{
+ background:#e53935;
+}
+
+.hero2{
+ padding:28px 4%;
+ background:linear-gradient(120deg,#fff0e8,#fff);
+ text-align:center;
+}
+
+.hero2 h1{
+ color:#e53935;
+ margin:5px;
+}
+
+.toolbar{
+ padding:15px 4%;
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap;
+}
+
+.grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+ gap:18px;
+ padding:15px 4%;
+}
+
+.card{
+ background:white;
+ border-radius:10px;
+ overflow:hidden;
+ box-shadow:0 2px 8px #ddd;
+ position:relative;
+ cursor:pointer;
+}
+
+.card img{
+ width:100%;
+ height:155px;
+ object-fit:cover;
+}
+
+.card-content{
+ padding:13px;
+}
+
+.title{
+ font-size:18px;
+ font-weight:bold;
+}
+
+.tags{
+ color:#777;
+ font-size:13px;
+ margin:5px 0;
+}
+
+.price{
+ font-weight:bold;
+ color:#e53935;
+}
+
+.rating{
+ display:inline-block;
+ background:#fdbd00;
+ padding:3px 6px;
+ border-radius:4px;
+ margin-right:8px;
+}
+
+.like{
+ position:absolute;
+ right:10px;
+ top:10px;
+ background:white;
+ border-radius:50%;
+ padding:7px;
+ font-size:18px;
+}
+
+.badge{
+ display:inline-block;
+ padding:3px 7px;
+ border-radius:12px;
+ background:#eee;
+ font-size:11px;
+ margin-top:5px;
+}
+
+.veg{color:green}
+.nonveg{color:#d00}
+
+.panel{
+ background:white;
+ margin:20px 4%;
+ padding:20px;
+ border-radius:10px;
+ box-shadow:0 2px 8px #ddd;
+}
+
+.row{
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap;
+ margin:10px 0;
+}
+
+.row>*{
+ flex:1;
+}
+
+.modal{
+ display:none;
+ position:fixed;
+ inset:0;
+ background:#0008;
+ z-index:50;
+ align-items:center;
+ justify-content:center;
+ padding:15px;
+}
+
+.modal.show{
+ display:flex;
+}
+
+.box{
+ background:white;
+ border-radius:12px;
+ padding:22px;
+ width:min(650px,96%);
+ max-height:90vh;
+ overflow:auto;
+ position:relative;
+}
+
+.close{
+ position:absolute;
+ right:15px;
+ top:10px;
+ background:#333;
+}
+
+.cart-item{
+ display:flex;
+ justify-content:space-between;
+ gap:8px;
+ padding:10px;
+ border-bottom:1px solid #ddd;
+}
+
+.small{
+ font-size:12px;
+ color:#666;
+}
+
+.success{
+ color:green;
+ font-weight:bold;
+}
+
+table{
+ width:100%;
+ border-collapse:collapse;
+}
+
+th,td{
+ padding:9px;
+ border-bottom:1px solid #ddd;
+ text-align:left;
+}
+
+.stat{
+ display:inline-block;
+ background:#fff4ee;
+ padding:15px;
+ margin:5px;
+ border-radius:8px;
+ min-width:130px;
+}
+
+.logout{
+ background:#555;
+}
+
+@media(max-width:600px){
+
+ .home-nav{
+  flex-direction:column;
+  gap:12px;
+ }
+
+ .hero h1{
+  font-size:30px;
+ }
+.top{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:8px;
+}
+
+.top>*{
+    flex:none;
+}
+}
+.feature-card{background:#fff;border:1px solid #eee;border-radius:10px;padding:12px;margin:8px 0;box-shadow:0 1px 4px #eee}.box textarea{width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;resize:vertical}
+
+/* Final header layout: brand left, search centered, actions right */
+.restaurant-header .top {
+  display: grid !important;
+  grid-template-columns: minmax(165px, 1fr) minmax(180px, 350px) minmax(260px, 1fr) !important;
+  align-items: center !important;
+  gap: 12px !important;
+  width: 100%;
+  flex-wrap: nowrap !important;
+}
+.restaurant-header .top .logo {
+  justify-self: start;
+  min-width: 0;
+  margin-right: 0;
+  white-space: nowrap;
+}
+.restaurant-header .top #search {
+  justify-self: center;
+  width: 100%;
+  max-width: 350px;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.restaurant-header .top .header-actions {
+  justify-self: end;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  min-width: 0;
+  white-space: nowrap;
+}
+.restaurant-header .top .header-actions button {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  padding: 8px 9px;
+  font-size: 13px;
+}
+@media (max-width: 900px) {
+  .restaurant-header { overflow-x: auto; }
+  .restaurant-header .top {
+    min-width: 760px;
+    grid-template-columns: 170px minmax(180px, 1fr) auto !important;
+    gap: 10px !important;
+  }
+  .restaurant-header .top .header-actions { gap: 5px; }
+  .restaurant-header .top .header-actions button { padding: 7px 8px; font-size: 12px; }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ===================================================== -->
+<!-- HOME PAGE -->
+<!-- ===================================================== -->
+
+<div id="homePage">
+
+<header class="home-nav">
+
+<div class="home-logo">
+Red Rose
+</div>
+
+<div>
+<a onclick="scrollToLogin()">Home</a>
+<a onclick="scrollToLogin()">Menu</a>
+<a onclick="scrollToContact()">Contact</a>
+</div>
+
+</header>
+
+
+<main class="home-main">
+
+<section class="hero">
+
+<h1>
+Good Food is Good Mood
+</h1>
+
+<p>
+"One cannot think well, love well, sleep well,
+if one has not dined well."
+</p>
+
+
+<div class="tabs">
+
+<div
+class="tab active"
+onclick="toggleForm('signin')">
+Sign In
+</div>
+
+<div
+class="tab"
+onclick="toggleForm('signup')">
+Sign Up
+</div>
+
+</div>
+
+
+<!-- SIGN IN -->
+
+<form
+id="signin-form"
+onsubmit="handleSignIn(event)">
+
+<div class="form-group">
+
+<input
+type="text"
+placeholder="Username"
+id="signin-username"
+required
+>
+
+<input
+type="password"
+placeholder="Password"
+id="signin-password"
+required
+>
+
+</div>
+
+<div
+id="signin-message"
+class="message">
+</div>
+
+<button
+class="btn"
+type="submit">
+Sign In to Order
+</button>
+
+</form>
+
+
+<!-- SIGN UP -->
+
+<form
+id="signup-form"
+class="hidden"
+onsubmit="handleSignUp(event)">
+
+<div class="form-group">
+
+<input
+type="text"
+placeholder="First Name"
+id="firstname"
+required
+>
+
+<input
+type="text"
+placeholder="Last Name"
+id="lastname"
+required
+>
+
+<input
+type="text"
+placeholder="Address"
+id="address"
+required
+>
+
+<input
+type="password"
+placeholder="Password"
+id="password"
+required
+>
+
+<input
+type="password"
+placeholder="Confirm Password"
+id="confirm-password"
+required
+>
+
+</div>
+
+<div
+id="signup-message"
+class="message">
+</div>
+
+<button
+class="btn"
+type="submit">
+Sign Up to Order
+</button>
+
+</form>
+
+</section>
+
+</main>
+
+
+<section
+class="contact"
+id="contact">
+
+<h2>Contact Us</h2>
+
+<p>
+123 Red Rose Street, Foodie Town
+</p>
+
+<p>
+Phone: +91 98765 43210
+</p>
+
+<p>
+Email: contact@redrosefoods.com
+</p>
+
+</section>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- RESTAURANT PAGE - SAME HOME.HTML -->
+<!-- ===================================================== -->
+
+<div id="restaurantPage">
+
+<header class="restaurant-header">
+
+<div class="top">
+  <div class="logo">
+    <span class="brand-red">Red Rose</span>
+    <span class="brand-restaurant">Restaurant</span>
+  </div>
+
+  <input id="search" placeholder="Search food..." oninput="renderMenu()">
+
+  <div class="header-actions">
+    <button onclick="openModal('cartModal')">🛒 Cart (<span id="cartCount">0</span>)</button>
+    <button onclick="showFavourites()">❤️ Favourites</button>
+    <button class="logout" onclick="logout()">Logout</button>
+  </div>
+</div>
+
+
+<nav>
+
+<button
+class="active"
+onclick="setCategory('All',this)">
+All
+</button>
+
+<button
+onclick="setCategory('Veg',this)">
+Veg
+</button>
+
+<button
+onclick="setCategory('Non-Veg',this)">
+Non-Veg
+</button>
+
+<button
+onclick="setCategory('Starters',this)">
+Starters
+</button>
+
+<button
+onclick="setCategory('Main Course',this)">
+Main Course
+</button>
+
+<button
+onclick="setCategory('Desserts',this)">
+Desserts
+</button>
+
+<button
+onclick="setCategory('Drinks',this)">
+Drinks
+</button>
+<div style="display:flex; gap:8px; flex-wrap:wrap;">
+   <button onclick="filterCategory('Biryani')">Biryani</button>
+   <button onclick="filterCategory('Combos')">Combos</button>
+   <button onclick="filterCategory('Healthy')">Healthy</button>
+   <button onclick="filterCategory('Beverages')">Beverages</button>
+   <button onclick="openModal('tableModal')">Table Booking</button>
+   <button onclick="openModal('qrModal')">QR Table Order</button>
+   <button onclick="openModal('adminModal')">Admin</button>
+</div>
+</nav>
+
+</header>
+
+
+<section class="hero2">
+
+<h1>
+Online Food Ordering & Restaurant Management
+</h1>
+
+<p>
+Order Online • Dine-In • Table-Side Ordering • Delivery
+</p>
+
+</section>
+
+
+<div class="toolbar">
+
+<select
+id="sort"
+onchange="renderMenu()">
+
+<option value="">
+Sort by
+</option>
+
+<option value="low">
+Price: Low to High
+</option>
+
+<option value="high">
+Price: High to Low
+</option>
+
+<option value="rating">
+Rating
+</option>
+
+</select>
+
+
+<select
+id="diet"
+onchange="renderMenu()">
+
+<option value="">
+All Types
+</option>
+
+<option value="Veg">
+Veg
+</option>
+
+<option value="Non-Veg">
+Non-Veg
+</option>
+
+</select>
+
+</div>
+
+
+<div
+id="menu"
+class="grid">
+</div>
+
+
+<section class="panel">
+
+<h2>
+⚡ Restaurant Services
+</h2>
+
+<div class="row">
+
+<button
+onclick="openModal('tableModal')">
+Book Table
+</button>
+
+<button
+onclick="openModal('qrModal')">
+Table-Side Touchscreen / QR
+</button>
+
+<button
+onclick="openModal('trackingModal')">
+Track Order
+</button>
+
+<button
+onclick="openModal('kitchenModal')">
+Kitchen Orders
+</button>
+
+<button onclick="showRecommendations()">✨ Smart Recommendations</button>
+<button onclick="surpriseMe()">🎲 Surprise Me</button>
+<button onclick="showFavouritesReorder()">❤️ Favourites & Reorder</button>
+<button onclick="openModal('groupModal')">👨‍👩‍👧 Group Order</button>
+<button onclick="openModal('budgetModal');updateBudget()">💰 Budget / Split Bill</button>
+<button onclick="openModal('ecoModal')">🌱 Eco Order</button>
+<button onclick="openModal('reviewModal')">⭐ Reviews</button>
+
+</div>
+
+</section>
+
+
+<!-- ITEM MODAL -->
+
+<div
+class="modal"
+id="itemModal">
+
+<div class="box">
+
+<button
+class="close"
+onclick="closeModals()">
+✕
+</button>
+
+<img
+id="itemImg"
+style="width:100%;height:220px;object-fit:cover;border-radius:8px"
+>
+
+<h2 id="itemName"></h2>
+
+<p id="itemInfo"></p>
+
+<p id="itemPrice"></p>
+
+<label>
+Quantity
+
+<input
+id="qty"
+type="number"
+value="1"
+min="1"
+>
+
+</label>
+
+
+<div class="row">
+
+<select id="spice">
+
+<option>Normal Spice</option>
+<option>Less Spicy</option>
+<option>Medium Spicy</option>
+<option>Extra Spicy</option>
+
+</select>
+
+
+<select id="custom">
+
+<option>No Customization</option>
+<option>Extra Cheese +₹30</option>
+<option>Extra Sauce +₹15</option>
+<option>Remove Onion</option>
+
+</select>
+
+</div>
+
+
+<button onclick="addCurrentToCart()">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+
+<!-- CART -->
+
+<div
+class="modal"
+id="cartModal">
+
+<div class="box">
+
+<button
+class="close"
+onclick="closeModals()">
+✕
+</button>
+
+<h2>
+🛒 Smart Cart & Checkout
+</h2>
+
+<div id="cartList"></div>
+
+<hr>
+
+<input
+id="coupon"
+placeholder="SAVE10 / BOGO"
+>
+
+<button onclick="applyCoupon()">
+Apply
+</button>
+
+<p>
+Subtotal: ₹<span id="subtotal">0</span>
+</p>
+
+<p>
+Discount: ₹<span id="discount">0</span>
+</p>
+
+<h3>
+Total: ₹<span id="total">0</span>
+</h3>
+
+
+<select id="orderType">
+
+<option>
+Home Delivery
+</option>
+
+<option>
+Dine-In Pre-Order
+</option>
+
+<option>
+Table-Side Order
+</option>
+
+</select>
+
+
+<select id="payment">
+
+<option>
+Cash on Delivery
+</option>
+
+<option>
+UPI (Simulation)
+</option>
+
+<option>
+Card (Simulation)
+</option>
+
+</select>
+
+
+<button onclick="placeOrder()">
+Place Order
+</button>
+
+</div>
+
+</div>
+
+
+<!-- TABLE BOOKING -->
+
+<div
+class="modal"
+id="tableModal">
+
+<div class="box">
+
+<button
+class="close"
+onclick="closeModals()">
+✕
+</button>
+
+<h2>
+🍽️ Live Table Booking
+</h2>
+
+<div class="row">
+
+<input
+id="guestName"
+placeholder="Name"
+>
+
+<input
+id="tableDate"
+type="date"
+>
+
+<input
+id="tableTime"
+type="time"
+>
+
+</div>
+
+<button onclick="bookTable()">
+Confirm Table Booking
+</button>
+
+<p id="bookingMsg"></p>
+
+</div>
+
+</div>
+
+
+<!-- TABLE SIDE / QR -->
+
+<div
+class="modal"
+id="qrModal">
+
+<div class="box">
+
+<button
+class="close"
+onclick="closeModals()">
+✕
+</button>
+
+<h2>
+📱 Table-Side Touchscreen Ordering
+</h2>
+
+<p>
+Select your table.
+</p>
+
+<select id="qrTable">
+
+<option>Table 1</option>
+<option>Table 2</option>
+<option>Table 3</option>
+<option>Table 4</option>
+<option>Table 5</option>
+<option>Table 6</option>
+<option>Table 7</option>
+<option>Table 8</option>
+<option>Table 9</option>
+<option>Table 10</option>
+
+</select>
+
+<p>
+QR Status:
+<b class="success">
+Ready to Order
+</b>
+</p>
+
+<button
+onclick="connectTable()">
+Connect Table
+</button>
+
+<button
+onclick="payTableBill()">
+Pay Table Bill
+</button>
+
+</div>
+
+</div>
+
+
+<!-- TRACKING -->
+
+<div
+class="modal"
+id="trackingModal">
+
+<div class="box">
+
+<button
+class="close"
+onclick="closeModals()">
+✕
+</button>
+
+<h2>
+🚚 Order Tracking
+</h2>
+
+<div id="tracking">
+No active order.
+</div>
+
+</div>
+
+</div>
+
+
+<!-- KITCHEN -->
+
+<div
+class="modal"
+id="kitchenModal">
+
+<div class="box">
+
+<button
+class="close"
+onclick="closeModals()">
+✕
+</button>
+
+<h2>
+👨‍🍳 Kitchen Order Management
+</h2>
+
+<div id="kitchen"></div>
+
+</div>
+
+</div>
+
+
+<!-- ADMIN -->
+
+<div
+class="modal"
+id="adminModal">
+
+<div class="box">
+
+<button
+class="close"
+onclick="closeModals()">
+✕
+</button>
+
+<h2>
+📊 Admin Dashboard
+</h2>
+
+<div id="stats"></div>
+
+<h3>
+Recent Orders
+</h3>
+
+<div id="adminOrders"></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- EXTRA RESTAURANT SERVICE MODALS -->
+<div class="modal" id="featureModal">
+  <div class="box">
+    <button class="close" onclick="closeModals()">✕</button>
+    <h2 id="featureTitle"></h2>
+    <div id="featureContent"></div>
+  </div>
+</div>
+
+<div class="modal" id="groupModal">
+  <div class="box">
+    <button class="close" onclick="closeModals()">✕</button>
+    <h2>👨‍👩‍👧 Group Ordering</h2>
+    <p class="small">Simulation using local storage.</p>
+    <button onclick="createGroup()">Create Group</button>
+    <input id="groupCode" placeholder="Enter group code">
+    <button onclick="joinGroup()">Join Group</button>
+    <p id="groupMsg"></p>
+  </div>
+</div>
+
+<div class="modal" id="budgetModal">
+  <div class="box">
+    <button class="close" onclick="closeModals()">✕</button>
+    <h2>💰 Budget Planner / Bill Split</h2>
+    <input id="budgetAmount" type="number" min="0" placeholder="Budget in ₹" oninput="updateBudget()">
+    <input id="splitPeople" type="number" min="1" value="2" placeholder="Number of people" oninput="updateBudget()">
+    <div id="budgetResult" class="feature-card"></div>
+  </div>
+</div>
+
+<div class="modal" id="ecoModal">
+  <div class="box">
+    <button class="close" onclick="closeModals()">✕</button>
+    <h2>🌱 Eco Order</h2>
+    <label><input id="ecoChoice" type="checkbox" onchange="saveEcoChoice()" style="width:auto;margin-right:8px"> Skip cutlery and napkins</label>
+    <p id="ecoMsg" class="small">Choose this option to simulate a lower-packaging order.</p>
+  </div>
+</div>
+
+<div class="modal" id="reviewModal">
+  <div class="box">
+    <button class="close" onclick="closeModals()">✕</button>
+    <h2>⭐ Reviews & Ratings</h2>
+    <select id="reviewItem"></select>
+    <select id="reviewRating">
+      <option value="5">5 ⭐</option><option value="4">4 ⭐</option><option value="3">3 ⭐</option><option value="2">2 ⭐</option><option value="1">1 ⭐</option>
+    </select>
+    <textarea id="reviewText" rows="4" placeholder="Write your review..."></textarea>
+    <button onclick="submitReview()">Submit Review</button>
+    <div id="reviewList"></div>
+  </div>
+</div>
+
+<script>
+
+/* ======================================================
+   LOGIN / SIGNUP
+====================================================== */
+
+function toggleForm(form){
+
+const signin=
+document.getElementById("signin-form");
+
+const signup=
+document.getElementById("signup-form");
+
+const tabs=
+document.querySelectorAll(".tab");
+
+if(form==="signin"){
+
+signin.classList.remove("hidden");
+signup.classList.add("hidden");
+
+tabs[0].classList.add("active");
+tabs[1].classList.remove("active");
+
+}else{
+
+signup.classList.remove("hidden");
+signin.classList.add("hidden");
+
+tabs[1].classList.add("active");
+tabs[0].classList.remove("active");
+
+}
+
+}
+
+
+function handleSignIn(event){
+
+event.preventDefault();
+
+const username=
+document.getElementById("signin-username").value;
+
+const password=
+document.getElementById("signin-password").value;
+
+const message=
+document.getElementById("signin-message");
+
+if(username==="" || password===""){
+
+message.textContent=
+"Please fill all fields.";
+
+message.style.color="lightcoral";
+
+return;
+
+}
+
+message.textContent=
+"Login successful!";
+
+message.style.color="lightgreen";
+
+setTimeout(function(){
+
+document.getElementById("homePage").style.display="none";
+
+document.getElementById("restaurantPage").style.display="block";
+
+window.scrollTo(0,0);
+
+renderMenu();
+
+},800);
+
+}
+
+
+function handleSignUp(event){
+
+event.preventDefault();
+
+const password=
+document.getElementById("password").value;
+
+const confirmPassword=
+document.getElementById("confirm-password").value;
+
+const message=
+document.getElementById("signup-message");
+
+if(password!==confirmPassword){
+
+message.textContent=
+"Passwords do not match.";
+
+message.style.color="lightcoral";
+
+return;
+
+}
+
+message.textContent=
+"Signup successful!";
+
+message.style.color="lightgreen";
+
+setTimeout(function(){
+
+document.getElementById("homePage").style.display="none";
+
+document.getElementById("restaurantPage").style.display="block";
+
+window.scrollTo(0,0);
+
+renderMenu();
+
+},800);
+
+}
+
+
+function logout(){
+
+document.getElementById("restaurantPage").style.display="none";
+
+document.getElementById("homePage").style.display="block";
+
+window.scrollTo(0,0);
+
+}
+
+const foods=[
+
+["Omlette Rice","Korean","omle.jpg",4.0,31,180,"Non-Veg","Main Course"],
+["Bibimbap","Korean","bb.jpg",3.9,25,220,"Veg","Main Course"],
+["Chicken Lollipop","Indian","lolli.jpg",5.0,44,260,"Non-Veg","Starters"],
+["Corn Dogs","American","cds.jpg",4.3,26,170,"Veg","Starters"],
+["Hot Dogs","American","hot.jpg",3.6,30,160,"Non-Veg","Starters"],
+["Tandoori","Indian","tandori.webp",4.4,43,300,"Non-Veg","Main Course"],
+["Chicken Biryani","Indian","chickenbiryani.jpg",4.8,50,280,"Non-Veg","Main Course"],
+["Biryani","Indian","biryani.jpg",5.0,55,250,"Non-Veg","Main Course"],
+["Chicken Wings","American","leg.jpg",4.8,40,280,"Non-Veg","Starters"],
+["Pizza","American","pizza.webp",4.0,55,300,"Veg","Main Course"],
+["Kimchi Friedrice","Korean","kimchi.jpg",4.1,28,190,"Veg","Main Course"],
+["Ramen Bowl","Korean","ramen.jpg",4.3,45,240,"Non-Veg","Main Course"],
+["Grilled Sandwich","American","grillsan.jpg",4.5,30,150,"Veg","Starters"],
+["Spaghetti","Italian","sapth.jpg",4.6,50,230,"Veg","Main Course"],
+["Pasta","Italian","pasta.jpg",4.0,53,220,"Veg","Main Course"],
+["Burrata","Italian","burrata.jpg",3.0,35,260,"Veg","Starters"],
+["Tiramisu","Italian","tiramis.jpg",4.7,50,180,"Veg","Desserts"],
+["Carbonara","Italian","carbp.jpg",4.1,43,240,"Non-Veg","Main Course"],
+["Pecorino Romano","Italian","perico.jpg",4.6,45,210,"Veg","Starters"],
+["Piadina Romagnola","Italian","padrom.jpg",4.3,34,190,"Veg","Starters"],
+["Tacos","Italian","tacos.jpg",4.6,33,180,"Veg","Starters"],
+["Risotto","Italian","risto.jpg",4.0,53,250,"Veg","Main Course"],
+["Lasagna","Italian","lasg.jpg",4.4,37,280,"Non-Veg","Main Course"],
+["Grilled Steak","American","grs.jpg",3.8,49,420,"Non-Veg","Main Course"],
+["Egg Bowl","Korean","eggbowl.jpg",3.6,42,180,"Non-Veg","Main Course"],
+["Burger","American","burger.jpg",4.1,39,220,"Non-Veg","Main Course"],
+["Makhana","Indian","makhana.jpg",4.2,27,180,"Veg","Main Course"],
+["Veg soup","Indian","vegsoup.jpg",4.6,35,100,"Veg","Main Course"],
+["Mushroom Biryani","Indian","musrbir.jpg",3.7,42,170,"Veg","Main Course"],
+["Parotta","Indian","paaro.jpg",3.9,29,120,"Veg","Main Course"],
+["Chicken Tikka","Indian","chictik.jpg",4.7,42,280,"Non-Veg","Starters"],
+["Kaju Katli","Indian","kaju.jpg",3.6,30,100,"Veg","Desserts"],
+["Kadai Paneer","Indian","kade.jpg",4.5,40,230,"Veg","Main Course"],
+["Apple Pie","American","apple.jpg",3.8,22,150,"Veg","Desserts"],
+["Chicken Tenders","American","chitenders.jpg",4.0,42,240,"Non-Veg","Starters"],
+["Choco-Chip Cookies","American","cccokkie.jpg",4.8,35,120,"Veg","Desserts"],
+["Tteokbokki","Korean","tteok.jpg",3.6,42,190,"Veg","Starters"],
+["Hwajeon","Korean","haw.jpg",3.9,42,160,"Veg","Desserts"],
+["Bulgogi","Korean","bul.jpg",4.6,40,320,"Non-Veg","Main Course"],
+["Mochi","Korean","mochi.jpg",3.6,42,140,"Veg","Desserts"],
+["Pork Belly","Korean","pork.jpg",4.8,22,350,"Non-Veg","Main Course"],
+["Paneer Tikka","Indian","paneer.jpg",4.6,30,220,"Veg","Starters"],
+["Kaju Paneer","Indian","kajpan.jpg",4.5,35,260,"Veg","Main Course"],
+["Paneer Butter Masala","Indian","panbut.jpg",4.7,35,240,"Veg","Main Course"],
+["Veg Fried Rice","Indian","vegfr.jpg",4.3,25,170,"Veg","Main Course"],
+["Veg Schezwan Noodles","Indian","vegsc.jpg",4.4,28,180,"Veg","Main Course"],
+["Gobi Manchurian","Indian","gob.jpg",4.5,25,170,"Veg","Starters"],
+["Mushroom 65","Indian","mus65.jpg",4.4,25,190,"Veg","Starters"],
+["Veg Momos","Indian","VEG-MOMOS.jpg",4.6,20,150,"Veg","Starters"],
+["Cheese Garlic Bread","Italian","chesegar.jpg",4.7,18,160,"Veg","Starters"],
+["Chicken 65","Indian","chi65.jpg",4.7,30,250,"Non-Veg","Starters"],
+["Chicken Manchurian","Indian","chiman.jpg",4.5,35,260,"Non-Veg","Main Course"],
+["Chicken Fried Rice","Indian","chifrice.jpg",4.5,30,220,"Non-Veg","Main Course"],
+["Chicken Tandoori","Indian","chitan.jpg",4.8,45,320,"Non-Veg","Main Course"],
+["Chicken Shawarma","Indian","chisha.jpg",4.5,25,200,"Non-Veg","Starters"],
+["Mutton Biryani","Indian","mutbir.jpg",4.8,55,340,"Non-Veg","Main Course"],
+["Mutton Curry","Indian","mutcur.jpg",4.5,50,330,"Non-Veg","Main Course"],
+["Fish Fry","Indian","fisfry.jpg",4.4,35,280,"Non-Veg","Starters"],
+["Prawn Fry","Indian","praw.jpg",4.6,35,320,"Non-Veg","Starters"],
+["Prawn Biryani","Indian","prbir.jpg",4.7,50,350,"Non-Veg","Main Course"],
+["Egg Biryani","Indian","eggbir.jpg",4.4,45,210,"Non-Veg","Main Course"],
+["Gulab Jamun","Indian","gulab.jpg",4.7,15,100,"Veg","Desserts"],
+["Brownie","American","brow.jpg",4.6,20,150,"Veg","Desserts"],
+["ICecream","Indian","ice.jpg",4.8,30,150,"Veg","Desserts"],
+["MilkShake","American","shakes.jpg",4.9,30,150,"Veg","Desserts"],
+["Fresh Lime Soda","Indian","limes.jpg",4.3,10,90,"Veg","Drinks"],
+["Mango Lassi","Indian","malas.jpg",4.7,10,120,"Veg","Drinks"],
+["Cold Coffee","American","cocof.jpg",4.5,12,140,"Veg","Drinks"],
+["Veg Biryani", "Indian", "vbir.jpg", 4.5, 30, 249, "Veg", "Biryani"],
+["Paneer Biryani", "Indian", "panbir.jpg", 4.6, 35, 279, "Veg", "Biryani"],
+["Fish Biryani", "Indian", "fisbir.jpg", 4.5, 40, 349, "Non-Veg", "Biryani"],
+["Dum Biryani", "Indian", "dumm.jpg", 4.7, 40, 299, "Non-Veg", "Biryani"],
+["Boneless Chicken Biryani", "Indian", "bonch.jpg", 4.8, 35, 329, "Non-Veg", "Biryani"],
+["Veg Combo Meal", "Indian", "combov.jpg", 4.5, 35, 299, "Veg", "Combos"],
+["Chicken Combo Meal", "Indian", "comboc.jpg", 4.7, 40, 399, "Non-Veg", "Combos"],
+["Family Biryani Combo", "Indian", "combob.jpg", 4.8, 55, 699, "Non-Veg", "Combos"],
+
+];
+
+
+let category="All";
+let currentItem=null;
+let cart=[];
+let favourites=new Set();
+
+let orders=
+JSON.parse(
+localStorage.getItem("restaurantOrders")||"[]"
+);
+
+let bookedTables=
+JSON.parse(
+localStorage.getItem("bookedTables")||"[]"
+);
+
+let discount=0;
+function setCategory(c,btn){
+
+category=c;
+
+document
+.querySelectorAll("nav button")
+.forEach(b=>b.classList.remove("active"));
+
+if(btn)
+btn.classList.add("active");
+
+renderMenu();
+
+}
+
+
+function filterCategory(c){
+  setCategory(c,null);
+}
+
+function fallbackFoodImage(foodName){
+    const name=String(foodName||"").toLowerCase();
+    const photo={
+        biryani:"https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=700&q=80",
+        combo:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80",
+        healthy:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=700&q=80",
+        beverage:"https://images.unsplash.com/photo-1513558161293-cdaad6de1c54?auto=format&fit=crop&w=700&q=80",
+        lassi:"https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=700&q=80",
+        coffee:"https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=80"
+    };
+    if(name.includes("lassi")) return photo.lassi;
+    if(name.includes("coffee")) return photo.coffee;
+    if(name.includes("biryani")) return photo.biryani;
+    if(name.includes("combo")) return photo.combo;
+    if(/soup|makhana|mushroom|salad|grilled|fruit|oats/.test(name)) return photo.healthy;
+    if(/juice|soda|milkshake|tea|drink|beverage/.test(name)) return photo.beverage;
+    return photo.healthy;
+}
+
+function renderMenu(){
+
+const q=
+document
+.getElementById("search")
+.value
+.toLowerCase();
+
+const diet=
+document
+.getElementById("diet")
+.value;
+
+const sort=
+document
+.getElementById("sort")
+.value;
+
+
+let list=foods.filter(f=>{
+const name=f[0].toLowerCase();
+let categoryMatch =
+    category==="All" ||
+    f[6]===category ||
+    f[7]===category;
+
+if(category==="Biryani") categoryMatch = name.includes("biryani");
+if(category==="Combos") categoryMatch = f[7]==="Combos" || name.includes("combo");
+if(category==="Healthy") categoryMatch = /soup|makhana|mushroom|salad|grilled|fruit|oats/.test(name);
+if(category==="Beverages") categoryMatch = f[7]==="Drinks" || /beverage|juice|lassi|coffee|soda|milkshake|tea|drink/.test(name);
+
+return categoryMatch &&
+       (diet==="" || f[6]===diet) &&
+       name.includes(q);
+});
+
+
+if(sort==="low")
+list.sort((a,b)=>a[5]-b[5]);
+
+if(sort==="high")
+list.sort((a,b)=>b[5]-a[5]);
+
+if(sort==="rating")
+list.sort((a,b)=>b[3]-a[3]);
+
+
+document.getElementById("menu").innerHTML=
+
+list.map(f=>`
+
+<div
+class="card"
+onclick="openItem('${esc(f[0])}')">
+
+<img
+src="${f[2]}"
+alt="${f[0]}"
+onerror="this.onerror=null;this.src=fallbackFoodImage('${esc(f[0])}')"
+>
+
+<span
+class="like"
+onclick="event.stopPropagation();fav('${esc(f[0])}')">
+
+${favourites.has(f[0])?"❤️":"🤍"}
+
+</span>
+
+<div class="card-content">
+
+<div class="title">
+${f[0]}
+</div>
+
+<div class="tags">
+${f[1]} • ${f[4]} mins
+</div>
+
+<span
+class="badge ${f[6]==="Veg"?"veg":"nonveg"}">
+
+${f[6]}
+
+</span>
+
+<div style="margin-top:8px">
+
+<span class="rating">
+${f[3]}⭐
+</span>
+
+<span class="price">
+₹${f[5]}
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+function esc(s){
+
+return s.replace(/'/g,"\\'");
+
+}
+function openItem(name){
+
+currentItem=
+foods.find(f=>f[0]===name);
+
+if(!currentItem)
+return;
+
+
+itemImg.src=currentItem[2];
+
+itemImg.onerror=()=>{
+    itemImg.onerror=null;
+    itemImg.src=fallbackFoodImage(currentItem[0]);
+};
+
+
+itemName.textContent=
+currentItem[0];
+
+itemInfo.textContent=
+`${currentItem[1]} • ${currentItem[6]} • ${currentItem[3]}⭐ • ${currentItem[4]} mins`;
+
+itemPrice.textContent=
+"₹"+currentItem[5];
+
+qty.value=1;
+
+openModal("itemModal");
+
+}
+
+
+function fav(name){
+
+favourites.has(name)
+?
+favourites.delete(name)
+:
+favourites.add(name);
+
+renderMenu();
+
+}
+
+
+function showFavourites(){
+
+const list=
+foods.filter(
+f=>favourites.has(f[0])
+);
+
+alert(
+list.length
+?
+list.map(f=>f[0]).join("\n")
+:
+"No favourites yet ❤️"
+);
+
+}
+
+
+/* ======================================================
+   CART
+====================================================== */
+
+function addCurrentToCart(){
+
+let q=
+Math.max(
+1,
+parseInt(qty.value)||1
+);
+
+let extra=
+custom.value.includes("Cheese")
+?
+30
+:
+custom.value.includes("Sauce")
+?
+15
+:
+0;
+
+
+cart.push({
+
+name:currentItem[0],
+
+price:currentItem[5]+extra,
+
+qty:q,
+
+spice:spice.value,
+
+custom:custom.value
+
+});
+
+
+updateCart();
+
+closeModals();
+
+openModal("cartModal");
+
+}
+
+
+function updateCart(){
+
+cartCount.textContent=
+cart.reduce(
+(s,x)=>s+x.qty,
+0
+);
+
+
+cartList.innerHTML=
+
+cart.length
+
+?
+
+cart.map((x,i)=>`
+
+<div class="cart-item">
+
+<div>
+
+<b>${x.name}</b>
+
+<br>
+
+<span class="small">
+${x.spice}, ${x.custom}
+</span>
+
+</div>
+
+<div>
+
+₹${x.price*x.qty}
+
+<button
+onclick="removeCart(${i})">
+✕
+</button>
+
+</div>
+
+</div>
+
+`).join("")
+
+:
+
+"<p>Your cart is empty.</p>";
+
+
+let sub=
+cart.reduce(
+(s,x)=>s+x.price*x.qty,
+0
+);
+
+subtotal.textContent=sub;
+
+discount=
+Math.min(discount,sub);
+
+document
+.getElementById("discount")
+.textContent=discount;
+
+total.textContent=
+Math.max(
+0,
+sub-discount
+);
+
+}
+
+
+function removeCart(i){
+
+cart.splice(i,1);
+
+updateCart();
+
+}
+
+
+function applyCoupon(){
+
+let code=
+document
+.getElementById("coupon")
+.value
+.toUpperCase();
+
+let sub=
+cart.reduce(
+(s,x)=>s+x.price*x.qty,
+0
+);
+
+
+if(code==="SAVE10"){
+
+discount=
+Math.round(sub*.10);
+
+alert("10% discount applied");
+
+}
+
+else if(code==="BOGO"){
+
+discount=
+cart.length
+?
+Math.min(...cart.map(x=>x.price))
+:
+0;
+
+alert("BOGO offer applied");
+
+}
+
+else{
+
+discount=0;
+
+alert("Invalid coupon");
+
+}
+
+updateCart();
+
+}
+function placeOrder(){
+
+if(!cart.length){
+
+alert(
+"Add items to cart first"
+);
+
+return;
+
+}
+
+
+let id=
+"ORD"
++
+Date.now()
+.toString()
+.slice(-6);
+
+
+let totalAmount=
+Number(total.textContent);
+
+
+let order={
+
+id:id,
+
+items:[...cart],
+
+total:totalAmount,
+
+type:orderType.value,
+
+payment:payment.value,
+
+status:"Order Placed",
+
+time:new Date().toLocaleString()
+
+};
+
+
+orders.unshift(order);
+
+
+localStorage.setItem(
+"restaurantOrders",
+JSON.stringify(orders)
+);
+
+
+cart=[];
+
+discount=0;
+
+updateCart();
+
+closeModals();
+
+alert(
+"Order placed successfully! "
++
+id
+);
+
+updateTracking();
+
+updateKitchen();
+
+}
+
+
+/* ======================================================
+   ORDER TRACKING
+====================================================== */
+
+function updateTracking(){
+
+let o=orders[0];
+
+tracking.innerHTML=
+
+o
+
+?
+
+`
+
+<h3>
+${o.id}
+</h3>
+
+<p>
+Status:
+<b>${o.status}</b>
+</p>
+
+<p>
+${o.type}
+</p>
+
+<button
+onclick="advanceOrder()">
+Update Status
+</button>
+
+`
+
+:
+
+"No active order.";
+
+}
+
+
+function advanceOrder(){
+
+let o=orders[0];
+
+if(!o)
+return;
+
+
+let stages=[
+
+"Order Placed",
+
+"Preparing",
+
+"Ready",
+
+"Out for Delivery",
+
+"Delivered"
+
+];
+
+
+let i=
+stages.indexOf(o.status);
+
+o.status=
+stages[
+Math.min(
+i+1,
+stages.length-1
+)
+];
+
+
+localStorage.setItem(
+"restaurantOrders",
+JSON.stringify(orders)
+);
+
+updateTracking();
+
+updateKitchen();
+
+}
+
+
+/* ======================================================
+   KITCHEN
+====================================================== */
+
+function updateKitchen(){
+
+kitchen.innerHTML=
+
+orders
+.slice(0,8)
+.map(o=>`
+
+<div class="panel">
+
+<b>
+${o.id}
+</b>
+
+—
+${o.status}
+
+<br>
+
+₹${o.total}
+
+<br>
+
+<button
+onclick="advanceOrder()">
+
+Move to Next Stage
+
+</button>
+
+</div>
+
+`)
+.join("")
+
+||
+
+"No orders.";
+
+}
+
+
+/* ======================================================
+   TABLE BOOKING
+====================================================== */
+
+function bookTable(){
+
+let t=
+prompt(
+"Enter table number (1-6):"
+);
+
+if(!t)
+return;
+
+
+let record={
+
+table:t,
+
+name:
+guestName.value||"Guest",
+
+date:tableDate.value,
+
+time:tableTime.value
+
+};
+
+
+bookedTables.push(record);
+
+
+localStorage.setItem(
+"bookedTables",
+JSON.stringify(bookedTables)
+);
+
+
+bookingMsg.textContent=
+"Table "
++
+t
++
+" booked successfully.";
+
+bookingMsg.className=
+"success";
+
+}
+
+
+function connectTable(){
+
+alert(
+"Table connected successfully! You can now place your table-side order."
+);
+
+}
+
+
+function payTableBill(){
+
+alert(
+"Table-side payment simulation completed successfully. No real payment is processed."
+);
+
+}
+
+
+/* ======================================================
+   ADMIN
+====================================================== */
+
+function adminData(){
+
+let revenue=
+orders.reduce(
+(s,o)=>s+o.total,
+0
+);
+
+
+stats.innerHTML=`
+
+<div class="stat">
+
+<b>${foods.length}</b>
+
+<br>
+
+Menu Items
+
+</div>
+
+
+<div class="stat">
+
+<b>${orders.length}</b>
+
+<br>
+
+Orders
+
+</div>
+
+
+<div class="stat">
+
+<b>₹${revenue}</b>
+
+<br>
+
+Sales
+
+</div>
+
+
+<div class="stat">
+
+<b>${bookedTables.length}</b>
+
+<br>
+
+Bookings
+
+</div>
+
+`;
+
+
+adminOrders.innerHTML=
+
+orders.length
+
+?
+
+`
+
+<table>
+
+<tr>
+
+<th>Order</th>
+
+<th>Status</th>
+
+<th>Total</th>
+
+</tr>
+
+${orders.map(o=>`
+
+<tr>
+
+<td>${o.id}</td>
+
+<td>${o.status}</td>
+
+<td>₹${o.total}</td>
+
+</tr>
+
+`).join("")}
+
+</table>
+
+`
+
+:
+
+"No orders yet.";
+
+}
+
+
+/* ======================================================
+   MODALS
+====================================================== */
+
+function openModal(id){
+
+document
+.getElementById(id)
+.classList.add("show");
+
+
+if(id==="cartModal")
+updateCart();
+
+if(id==="trackingModal")
+updateTracking();
+
+if(id==="kitchenModal")
+updateKitchen();
+
+if(id==="adminModal")
+adminData();
+
+}
+
+
+function closeModals(){
+
+document
+.querySelectorAll(".modal")
+.forEach(m=>
+m.classList.remove("show")
+);
+
+}
+
+
+window.onclick=function(e){
+
+if(
+e.target.classList.contains("modal")
+){
+
+e.target.classList.remove("show");
+
+}
+
+};
+
+
+/* ======================================================
+   HOME NAVIGATION
+====================================================== */
+
+function scrollToLogin(){
+
+document
+.querySelector(".hero")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+function scrollToContact(){
+
+document
+.getElementById("contact")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+/* ======================================================
+   EXTRA RESTAURANT SERVICES
+   ====================================================== */
+function openFeature(title, html){
+  featureTitle.textContent=title;
+  featureContent.innerHTML=html;
+  openModal("featureModal");
+}
+
+function recommendationList(){
+  const favList=foods.filter(f=>favourites.has(f[0]));
+  const source=(favList.length?favList:foods.slice(0,6));
+  return [...source].sort((a,b)=>b[3]-a[3]).slice(0,5);
+}
+
+function showRecommendations(){
+  const list=recommendationList();
+  openFeature("✨ Smart Recommendations", list.map(f=>`
+    <div class="feature-card">
+      <b>${f[0]}</b><br>
+      <span class="small">${f[1]} • ${f[4]} mins • ₹${f[5]}</span>
+      <button style="margin-top:7px" onclick="openItem('${esc(f[0])}')">View & Add</button>
+    </div>`).join(""));
+}
+
+function surpriseMe(){
+  if(!foods.length) return;
+  const f=foods[Math.floor(Math.random()*foods.length)];
+  openItem(f[0]);
+}
+
+function showFavouritesReorder(){
+  const list=foods.filter(f=>favourites.has(f[0]));
+  if(!list.length){
+    showFavourites();
+    return;
+  }
+  openFeature("❤️ Favourites & Reorder", list.map(f=>`
+    <div class="feature-card">
+      <b>${f[0]}</b> — ₹${f[5]}
+      <button style="float:right" onclick="quickReorder('${esc(f[0])}')">Reorder</button>
+    </div>`).join(""));
+}
+
+function quickReorder(name){
+  const f=foods.find(x=>x[0]===name);
+  if(!f) return;
+  cart.push({name:f[0],price:f[5],qty:1,spice:"Normal Spice",custom:"No Customization"});
+  updateCart();
+  alert(f[0]+" added to cart.");
+}
+
+function createGroup(){
+  const code="RR"+Math.floor(1000+Math.random()*9000);
+  localStorage.setItem("restaurantGroupCode",code);
+  groupCode.value=code;
+  groupMsg.textContent="Group created: "+code;
+  groupMsg.className="success";
+}
+
+function joinGroup(){
+  const code=groupCode.value.trim().toUpperCase();
+  if(!code){groupMsg.textContent="Enter a group code.";return;}
+  localStorage.setItem("joinedRestaurantGroup",code);
+  groupMsg.textContent="Joined group "+code+". Shared-cart syncing is simulated locally.";
+  groupMsg.className="success";
+}
+
+function updateBudget(){
+  const budget=Number(budgetAmount?.value||0);
+  const people=Math.max(1,Number(splitPeople?.value||1));
+  const current=Number(document.getElementById("total")?.textContent||0);
+  const per=current/people;
+  let msg=`Current cart total: <b>₹${current.toFixed(0)}</b><br>Split among ${people}: <b>₹${per.toFixed(0)} each</b>`;
+  if(budget>0){
+    const diff=budget-current;
+    msg+=diff>=0?`<br>Within budget by <b>₹${diff.toFixed(0)}</b>.`:`<br>Over budget by <b>₹${Math.abs(diff).toFixed(0)}</b>.`;
+  }
+  budgetResult.innerHTML=msg;
+}
+
+function saveEcoChoice(){
+  const checked=ecoChoice.checked;
+  localStorage.setItem("ecoOrder",checked?"yes":"no");
+  ecoMsg.textContent=checked?"Eco choice saved for this browser session.":"Standard packaging selected.";
+}
+
+function loadEcoChoice(){
+  ecoChoice.checked=localStorage.getItem("ecoOrder")==="yes";
+}
+
+function loadReviews(){
+  const reviews=JSON.parse(localStorage.getItem("restaurantReviews")||"[]");
+  reviewItem.innerHTML=foods.map(f=>`<option value="${esc(f[0])}">${f[0]}</option>`).join("");
+  reviewList.innerHTML=reviews.length?reviews.slice().reverse().slice(0,10).map(r=>`
+    <div class="feature-card"><b>${r.item}</b> — ${r.rating} ⭐<br><span class="small">${esc(r.text)}</span></div>`).join(""):"<p class='small'>No reviews yet.</p>";
+}
+
+function submitReview(){
+  const text=(reviewText.value||"").trim();
+  if(!text){alert("Write a review first.");return;}
+  const reviews=JSON.parse(localStorage.getItem("restaurantReviews")||"[]");
+  reviews.push({item:reviewItem.value,rating:Number(reviewRating.value),text,time:new Date().toLocaleString()});
+  localStorage.setItem("restaurantReviews",JSON.stringify(reviews));
+  reviewText.value="";
+  loadReviews();
+  alert("Review saved.");
+}
+
+/* Extra modal setup hook */
+const _openModal=openModal;
+openModal=function(id){
+  _openModal(id);
+  if(id==="ecoModal") loadEcoChoice();
+  if(id==="reviewModal") loadReviews();
+  if(id==="budgetModal") updateBudget();
+};
+
+/* INITIAL */
+
+updateCart();
+updateTracking();
+updateKitchen();
+
+</script>
+
+</body>
+</html>
